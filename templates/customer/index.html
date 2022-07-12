@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Email Sender</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+    }
+
+    .header {
+        height: 10vh;
+        color: white;
+        background: linear-gradient(168deg, rgb(248 208 160), rgb(165 78 115));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .body {
+        height: 80vh;
+        background-color: rgb(224, 224, 224);
+    }
+
+    .footer {
+        height: 10vh;
+        background: linear-gradient(90deg, rgb(248 208 160), rgb(165 78 115));
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .body__card {
+        position: relative;
+        height: 60vh;
+        width: 400px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px;
+        box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+        background: linear-gradient(360deg, rgb(247, 247, 247) 14%, white 0%);
+    }
+
+    .body__cardTo,
+    .body__cardMessage,
+    .body__cardSubject {
+        margin: 10px 0 10px 0;
+        padding: 5px 20 5px 20;
+    }
+
+    .body__cardTo {
+        display: flex;
+    }
+
+    .body__cardTo>b {
+        color: rgb(167, 166, 167);
+        flex: 0.1;
+    }
+
+    .body__cardTo>input {
+        flex: 0.9;
+    }
+
+    .body__cardTo>input,
+    .body__cardTo>input :focus,
+    .body__cardSubject>input,
+    .body__cardMessage>textarea {
+        outline: none;
+        border: none;
+    }
+
+    .body__cardMessage>textarea {
+        overflow-y: auto;
+        height: 220px;
+        width: -webkit-fill-available;
+        resize: none;
+    }
+
+    .body__cardSubmit {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 0 20px 12px 0;
+    }
+
+    .body__cardSubmit>input {
+        background-color: rgb(0, 0, 0);
+        color: white;
+        padding: 9px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    hr {
+        border: 1px solid rgb(245, 245, 245);
+    }
+
+    .body__cardSubmit>input:hover {
+        background-color: rgb(54, 54, 54);
+    }
+</style>
+
+<body>
+    <div class="header">
+        <h2>Email Sender</h2>
+    </div>
+    <div class="body">
+        <div class="body__card">
+            <form method="post" action="/customer/email_info/">
+                {% csrf_token %}
+                <div class="body__cardTo">
+                    <b>To:</b>
+                    <input type="text" name="to" placeholder="test@gmail.com" />
+                </div>
+                <hr>
+                <div class="body__cardSubject">
+                    <input type="text" name="subject" placeholder="Subject" />
+                </div>
+                <hr>
+                <div class="body__cardMessage">
+                    <textarea placeholder="Write Something here..." name="message"></textarea>
+                </div>
+                <div class="body__cardSubmit">
+                    <input type="submit" value="Send" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <h4>@EmailSender, Some rights reserved</h4>
+    </div>
+</body>
+
+</html>
